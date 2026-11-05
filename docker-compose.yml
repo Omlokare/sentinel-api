@@ -1,0 +1,13 @@
+services:
+  sentinel-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      APP_ENV: development
+      MAX_UPLOAD_MB: 5
+    volumes:
+      - sentinel-data:/srv/sentinel/data
+    restart: unless-stopped
+volumes:
+  sentinel-data:
