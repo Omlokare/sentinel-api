@@ -40,7 +40,7 @@ The scanner analyzes the supplied API description only. It does not send request
 
 ## Deployment
 
-The repository includes `render.yaml` for a Render web service with a persistent SQLite disk. To deploy, connect this repository in Render and create the Blueprint. For a GitHub Actions based workflow, push the repository to GitHub and the CI workflow runs Python compilation checks on each push and pull request.
+The repository includes `render.yaml` for a free Render demo web service. Its SQLite database uses the container's ephemeral filesystem, so project and scan data can be lost when the service restarts or redeploys. For durable production data, connect PostgreSQL with `DATABASE_URL` or use a paid service with persistent storage. The GitHub Actions workflow runs Python compilation checks on each push and pull request.
 
 ## Configuration
 
