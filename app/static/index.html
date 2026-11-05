@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10131a"><title>Sentinel API · Security Governance</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/"><span class="brand-mark">S</span><span>sentinel<span class="brand-light">.api</span></span></a>
+    <div class="side-label">WORKSPACE</div>
+    <button class="nav-item active" id="navDashboard"><span>◫</span> Overview</button>
+    <button class="nav-item" id="navProjects"><span>◇</span> API projects</button>
+    <div class="side-bottom"><span class="status-dot"></span> Scanner operational<br><small>OpenAPI 3.x · Static analysis</small></div>
+  </aside>
+  <main>
+    <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> <b>Security overview</b></div><div class="top-right"><span class="chip"><i></i> SYSTEM HEALTHY</span><span class="avatar">SA</span></div></header>
+    <section class="content">
+      <div class="heading-row"><div><div class="eyebrow">API SECURITY GOVERNANCE</div><h1>Security overview</h1><p class="subhead">Discover risk across your API portfolio.</p></div><button class="button primary" id="newProjectBtn">＋ &nbsp;New project</button></div>
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-top">API PROJECTS <span class="stat-icon blue">◇</span></div><div class="stat-value" id="projectCount">—</div><div class="stat-foot">Tracked in this workspace</div></article>
+        <article class="stat-card"><div class="stat-top">ENDPOINTS REVIEWED <span class="stat-icon purple">⌘</span></div><div class="stat-value" id="endpointCount">—</div><div class="stat-foot">Across latest scans</div></article>
+        <article class="stat-card"><div class="stat-top">OPEN FINDINGS <span class="stat-icon orange">△</span></div><div class="stat-value" id="findingCount">—</div><div class="stat-foot">Needs review</div></article>
+        <article class="stat-card"><div class="stat-top">CRITICAL RISK <span class="stat-icon red">!</span></div><div class="stat-value" id="criticalCount">—</div><div class="stat-foot">In latest scan per project</div></article>
+      </div>
+      <div class="section-row"><div><h2>API projects</h2><p class="muted">Your specifications and latest security reviews</p></div><button class="button secondary" id="refreshBtn">↻ &nbsp;Refresh</button></div>
+      <div class="project-list" id="projectList"><div class="loading">Loading workspace…</div></div>
+      <div class="footer-note"><span>◈</span> Findings are advisory static checks against the uploaded OpenAPI document. Review before remediation.</div>
+    </section>
+  </main>
+  <dialog id="projectDialog"><form id="projectForm"><button type="button" class="close" data-close>×</button><div class="eyebrow">GET STARTED</div><h2>Create API project</h2><p class="muted">Organize specifications and security scans.</p><label>Project name<input name="name" required maxlength="140" placeholder="e.g. Payments API"></label><label>Description <span class="optional">Optional</span><textarea name="description" rows="3" maxlength="2000" placeholder="What does this API do?"></textarea></label><div class="form-error" id="formError"></div><div class="dialog-actions"><button class="button secondary" type="button" data-close>Cancel</button><button class="button primary">Create project</button></div></form></dialog>
+  <dialog id="scanDialog"><div class="scan-dialog"><button type="button" class="close" data-close>×</button><div class="eyebrow">API SECURITY REVIEW</div><h2 id="scanTitle">Project</h2><p class="muted">Upload an OpenAPI 3.x spec to inspect route security and API controls.</p><label class="dropzone" id="dropzone"><span class="upload-icon">↑</span><b>Choose a specification</b><span>JSON or YAML · up to 5 MB</span><input type="file" id="specFile" accept=".json,.yaml,.yml,application/json"></label><div class="form-error" id="scanError"></div><div id="scanResults"></div></div></dialog>
+  <div class="toast" id="toast"></div>
+  <script src="/static/app.js" defer></script>
+</body></html>
