@@ -2,14 +2,10 @@ services:
   - type: web
     name: sentinel-api
     runtime: docker
-    plan: starter
+    plan: free
     healthCheckPath: /api/health
     envVars:
       - key: APP_ENV
         value: production
       - key: MAX_UPLOAD_MB
         value: "5"
-    disk:
-      name: sentinel-data
-      mountPath: /srv/sentinel/data
-      sizeGB: 1
